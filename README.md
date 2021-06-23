@@ -1,64 +1,68 @@
-# WebApp boilerplate with React JS
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/react-flask-hello.git)
+# Starwars Blog Reading List
+
+_The force is strong with this exercise..._
+
+We are going to be building a minimalist version of the [Star Wars Databank](https://www.starwars.com/databank) with a "Read Later" or "Favorites" list functionality.
+
+![Starwars Demo](https://github.com/breatheco-de/exercise-starwars-blog-reading-list/blob/master/preview.gif?raw=true)
+
+## 🌱  How to start this project
+
+Do not clone this repository.
+
+The first step to start coding is to clone this [react flux boilerplate](https://github.com/4GeeksAcademy/react-hello-webapp) on your local computer or Gitpod.
+
+a) If using Gitpod (recommended) you can clone the boilerplate by [clicking here](https://github.com/4GeeksAcademy/react-hello-webapp) 
+
+b) If working locally type the following command from your command line: 
+```sh
+$ git clone https://github.com/4GeeksAcademy/react-hello-webapp
+````
+
+💡 Important: Remember to create a new repository, update the remote (`git remote set-url origin <your new url>`), and upload the code to your new repository using `add`, `commit` and `push`.
+
+## 📝 Instructions
+
+1. Use Bootstrap components, you need **almost** no custom CSS.
+2. Take some time to understand the SWAPI.tech API, this will be our source of information, we will be consuming this API.
+3. Fetch the SWAPI people, vehicles and planets, and display them on your application.
+4. Declare a `favorites` array in your central store and allow the user to add or remove favorites.
+
+#### Building the grid of Characters and Planets
+
+- Create a React webapp that lists the _peope_, _vehicles_ and _planets_ **entities** provided by the [SWAPI](https://www.swapi.tech/documentation).
+
+Note: Please use https://www.swapi.tech/ instead of https://www.swapi.dev/ because the second one is causing problems.
 
 <p align="center">
-<a href="https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b"><img src="https://github.com/4GeeksAcademy/flask-rest-hello/blob/main/docs/assets/how-to.png?raw=true?raw=true" /></a>
+   <img height="100" src="https://raw.githubusercontent.com/nachovz/projects/master/p/javascript/semi-senior/startwars-blog-reading-list/sw_data.png" />
 </p>
 
-### Styles
-You can update the `styles/index.scss` or create new `.scss` files inside `styles/` and import them into your current scss or js files depending on your needs.
+#### Building a "Details" view for Character or Planet
 
-### Components
-Add more files into your `./src/js/components` or styles folder as you need them and import them into your current files as needed.
+- Each entity should have a short description (Bootstrap Card) and a "Details" view (Bootstrap components):
 
-💡Note: There is an example using the Context API inside `views/demo.js`;
+<p align="center">
+   <img height="100" src="https://raw.githubusercontent.com/nachovz/projects/master/p/javascript/semi-senior/startwars-blog-reading-list/sw_data_details.png" />
+</p>
 
-### Views (Components)
-Add more files into your `./src/js/views` and import them in `./src/js/layout.jsx`.
+***Important***: The SWAPI doesn't provide the images, you can use placeholders or avoid the images altogether. The focus of this exercise is to practice *fetch*, *router* and *context*; you can focus on the color theme and simple layout to make it look good.
 
-### Context
-This boilerplate comes with a centralized general Context API. The file `./src/js/store/flux.js` has a base structure for the store, we encourage you to change it and adapt it to your needs.
+***Important 2***: Don't worry if the data you get from the SWAPI doesn't match the data you see in starwars.com.
 
-React Context [docs](https://reactjs.org/docs/context.html)
-BreathCode Lesson [view](https://content.breatheco.de/lesson/react-hooks-explained)
+Use all the information provided by the SWAPI (check the docs and/or the json responses).
 
-The `Provider` is already set. You can consume from any component using the useContext hook to get the `store` and `actions` from the Context. Check `/views/demo.js` to see a demo.
+## Read Later or Favorites functionality
 
-```jsx
-import { Context } from "../store/appContext";
-const MyComponentSuper = () => {
-  //here you use useContext to get store and actions
-  const { store, actions } = useContext(Context);
-  return <div>{/* you can use your actions or store inside the html */}</div>
-}
-```
+Implement a "Read Later" functionality, i.e, a button that allows the user to "save" the item (character, vehicle or planet) into a special list. This list will be shown at the bottom of the home page, it resembles the main list but only shows the "saved" elements.
 
-### Back-End Manual Installation:
+#### Use the Context
 
-It is recomended to install the backend first, make sure you have Python 3.8, Pipenv and a database engine (Posgress recomended)
+To ensure that the user can "save" the item, you must implement an action that can be accessible from anywhere within the app.
 
-1. Install the python packages: `$ pipenv install`
-2. Create a .env file based on the .env.example: `$ cp .env.example .env`
-3. Install your database engine and create your database, depending on your database you have to create a DATABASE_URL variable with one of the possible values, make sure yo replace the valudes with your database information:
+## 😎 Feeling Confident?
 
-| Engine	| DATABASE_URL 						|
-| ------------- | ----------------------------------------------------- |
-| SQLite	| sqlite:////test.db	 				|
-| MySQL		| mysql://username:password@localhost:port/example	|
-| Postgress	| postgres://username:password@localhost:5432/example 	|
+The following features are not needed for the final solution, but you can develop them if you feel confident enough:
 
-4. Migrate the migrations: `$ pipenv run migrate` (skip if you have not made changes to the models on the `./src/api/models.py`)
-5. Run the migrations: `$ pipenv run upgrade`
-6. Run the application: `$ pipenv run start
-
-
-### Front-End Manual Installation:
-
-- Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
-
-1. Install the packages: `$ npm install`
-2. Start coding! start the webpack dev server `$ npm run start`
-
-## Publish your website!
-
-This boilerplate it's 100% integrated with Herkou, just by pushing your changes to the heroku repository it will deploy: `$ git push heroku main`
+- `+1` Prevent the website from fetching the Startwars API again if refreshed (you can use the localstorage to save the store on the local browser).
+- `+3` Implement a search bar with autocomplete for Characters and Planets. When the autocomplete is clicked it should take you to the Character or Planet page.
