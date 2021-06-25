@@ -1,4 +1,5 @@
 import React from "react";
+import Popper from "popper.js";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
