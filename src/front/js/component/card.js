@@ -11,21 +11,25 @@ export const Card = props => {
 				return res.json();
 			})
 			.then(person => {
-				setDetalles(person.result);
+				setDetalles(person.result.properties);
 			})
 			.catch(error => console.log("Error loading message from backend", error));
 	}, []);
 
 	return (
-		<div className="card" style={{ width: "18rem" }}>
+		<div className="m-2 col" style={{ width: "50rem" }}>
 			<img
 				className="card-img-top"
-				src="https://image.flaticon.com/icons/png/512/21/21104.png"
+				src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Star_wars2.svg/1200px-Star_wars2.svg.png"
 				alt="Card image cap"
 			/>
-			<div className="card-body">
-				<h5 className="card-title">{detalles ? detalles.properties.name : ""}</h5>
-				<p className="card-text">{detalles ? detalles.description : ""}</p>
+			<div className="card-body" style={{ heigth: "200px" }}>
+				<h5 className="card-title">{detalles ? detalles.name : ""}</h5>
+				<p className="card-text">{detalles ? `Hair Color: ${detalles.hair_color}` : ""}</p>
+				<p className="card-text">{detalles ? `Terrain: ${detalles.terrain} ` : ""}</p>
+				<p className="card-text">{detalles ? `Eye-Color: ${detalles.eye_color}` : ""}</p>
+				<p className="card-text">{detalles ? `Population: ${detalles.population}` : ""}</p>
+				<p className="card-text">{detalles ? `Gender: detalles.gender` : ""}</p>
 
 				<a href="#" className="btn btn-primary">
 					Go somewhere

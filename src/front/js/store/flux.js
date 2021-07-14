@@ -1,7 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			personajes: []
+			personajes: [],
+			planets: []
 		},
 		actions: {
 			getMessage: () => {
@@ -21,6 +22,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 							return { ...item, favorite: false };
 						});
 						setStore({ personajes: preparando });
+					})
+					.catch(error => console.log("Error loading message from backend", error));
+			},
+			loadPlanets: () => {
+				fetch("https://www.swapi.tech/api/planets")
+					.then(res => {
+						return res.json();
+					})
+					.then(data => {
+						let preparando = data.results.map(item => {
+							return { ...item, favorite: false };
+						});
+						setStore({ planets: preparando });
 					})
 					.catch(error => console.log("Error loading message from backend", error));
 			}
