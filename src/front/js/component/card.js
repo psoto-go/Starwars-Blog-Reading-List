@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export const Card = props => {
-	const [detalles, setDetalles] = useState(undefined);
+	const [detalles, setDetalles] = useState();
 
 	useEffect(() => {
 		fetch(props.url)
@@ -25,14 +25,23 @@ export const Card = props => {
 			/>
 			<div className="card-body" style={{ heigth: "200px" }}>
 				<h5 className="card-title">{detalles ? detalles.name : ""}</h5>
-				<p className="card-text">{detalles ? `Hair Color: ${detalles.hair_color}` : ""}</p>
-				<p className="card-text">{detalles ? `Terrain: ${detalles.terrain} ` : ""}</p>
-				<p className="card-text">{detalles ? `Eye-Color: ${detalles.eye_color}` : ""}</p>
-				<p className="card-text">{detalles ? `Population: ${detalles.population}` : ""}</p>
-				<p className="card-text">{detalles ? `Gender: detalles.gender` : ""}</p>
+				<p className="card-text">
+					{detalles ? (detalles.hair_color ? `Hair Color: ${detalles.hair_color}` : "") : ""}
+				</p>
+				<p className="card-text">{detalles ? (detalles.terrain ? `Terrain: ${detalles.terrain} ` : "") : ""}</p>
+				<p className="card-text">
+					{detalles ? (detalles.eye_color ? `Eye-Color: ${detalles.eye_color}` : "") : ""}
+				</p>
+				<p className="card-text">
+					{detalles ? (detalles.population ? `Population: ${detalles.population}` : "") : ""}
+				</p>
+				<p className="card-text">{detalles ? (detalles.gender ? `Gender: ${detalles.gender}` : "") : ""}</p>
 
 				<a href="#" className="btn btn-primary">
-					Go somewhere
+					Learn More!
+				</a>
+				<a href="#" className="btn btn-primary">
+					<i className="far fa-heart" />
 				</a>
 			</div>
 		</div>
