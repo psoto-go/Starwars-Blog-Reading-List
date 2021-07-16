@@ -6,7 +6,7 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { CharactersSingle } from "./pages/charactersSingle";
 import { PlanetsSingle } from "./pages/planetsSingle";
-import { Card } from "./component/card.js";
+import { Card } from "./component/card_character.js";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";

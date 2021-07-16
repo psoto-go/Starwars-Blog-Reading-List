@@ -1,5 +1,6 @@
 import React, { Component, useContext, useState, useEffect } from "react";
-import { Card } from "./card";
+import { Card_character } from "./card_character";
+import { Card_planet } from "./card_planet";
 import { Context } from "../store/appContext";
 
 export const ConjuntoPersons = props => {
@@ -10,10 +11,10 @@ export const ConjuntoPersons = props => {
 	}, []);
 
 	let personajes = store.personajes.map((item, index) => {
-		return <Card key={index} url={item.url} fav={item.favorite} />;
+		return <Card_character key={index} url={item.url} fav={item.favorite} itemId={item.uid} />;
 	});
 	let planets = store.planets.map((item, index) => {
-		return <Card key={index} url={item.url} fav={item.favorite} />;
+		return <Card_planet key={index} url={item.url} fav={item.favorite} />;
 	});
 
 	return (

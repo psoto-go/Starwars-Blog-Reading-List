@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-export const Card = props => {
+export const Card_planet = props => {
 	const [detalles, setDetalles] = useState();
 
 	useEffect(() => {
@@ -48,7 +48,7 @@ export const Card = props => {
 	);
 };
 
-Card.propTypes = {
+Card_planet.propTypes = {
 	url: PropTypes.string,
 	fav: PropTypes.bool
 };
