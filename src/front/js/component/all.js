@@ -14,7 +14,7 @@ export const ConjuntoPersons = props => {
 		return <Card_character key={index} url={item.url} fav={item.favorite} itemId={item.uid} />;
 	});
 	let planets = store.planets.map((item, index) => {
-		return <Card_planet key={index} url={item.url} fav={item.favorite} />;
+		return <Card_planet key={index} url={item.url} fav={item.favorite} itemId={item.uid} />;
 	});
 
 	return (

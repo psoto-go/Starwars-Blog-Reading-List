@@ -37,10 +37,12 @@ export const Card_planet = props => {
 				</p>
 				<p className="card-text">{detalles ? (detalles.gender ? `Gender: ${detalles.gender}` : "") : ""}</p>
 
-				<a href="#" className="btn btn-primary">
-					Learn More!
-				</a>
-				<a href="#" className="btn btn-primary">
+				<Link to={"/planets/" + props.itemId}>
+					<a type="Button" className="btn btn-primary">
+						Learn More!
+					</a>
+				</Link>
+				<a type="Button" className="btn btn-primary">
 					<i className="far fa-heart" />
 				</a>
 			</div>
@@ -50,5 +52,6 @@ export const Card_planet = props => {
 
 Card_planet.propTypes = {
 	url: PropTypes.string,
-	fav: PropTypes.bool
+	fav: PropTypes.bool,
+	itemId: PropTypes.string
 };
