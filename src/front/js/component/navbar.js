@@ -1,8 +1,10 @@
-import React from "react";
-import Popper from "popper.js";
+import React, { Component, useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
+import { DropdownButton, Dropdown } from "react-bootstrap";
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
 			<div className="container">
@@ -10,26 +12,20 @@ export const Navbar = () => {
 					src="https://logodownload.org/wp-content/uploads/2015/12/star-wars-logo-1-1.png"
 					style={{ width: "100px" }}
 				/>
-
-				<form className="form-inline ml-5">
-					<div className="btn-group">
-						<button
-							type="button"
-							className="btn btn-primary dropdown-toggle"
-							data-toggle="dropdown"
-							aria-haspopup="true"
-							aria-expanded="false">
-							Favorites
-						</button>
-						<div className="dropdown-menu">
-							<a className="dropdown-item" href="#" />
-							<a className="dropdown-item" href="#" />
-							<a className="dropdown-item" href="#" />
-							<div className="dropdown-divider" />
-							<a className="dropdown-item" href="#" />
-						</div>
-					</div>
-				</form>
+				<DropdownButton id="dropdown-basic-button" title="Dropdown button">
+					{store.personajes.map((item, index) => {
+						if (item.favorite == true) {
+							console.log(store.personajes);
+							return <Dropdown.Item key={index}>{item.name}</Dropdown.Item>;
+						}
+					})}
+					{store.planets.map((item, index) => {
+						if (item.favorite == true) {
+							console.log(store.planets);
+							return <Dropdown.Item key={index}>{item.name}</Dropdown.Item>;
+						}
+					})}
+				</DropdownButton>
 			</div>
 		</nav>
 

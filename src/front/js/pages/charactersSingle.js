@@ -21,7 +21,7 @@ export const CharactersSingle = props => {
 		<div className="container">
 			<div className="row">
 				<div className="col">
-					<img src="https://lh3.googleusercontent.com/proxy/PimXiNasMIRTxYR0QGoAjORToBYs9JB8tW1a7F5lhfpLnVMQevptnbKQLhFSmYO0L_N0nTGG2nE5R7DvdW04EobSwx-vLj3Rz9rkUBy_KJ4bItuPWz0xeo_HyA" />
+					<img src="https://avpn.asia/wp-content/uploads/sites/28/2019/10/800x600.png" />
 				</div>
 				<div className="col text-center">
 					<h1>{detalles ? detalles.properties.name : ""}</h1>

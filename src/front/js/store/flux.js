@@ -2,7 +2,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			personajes: [],
-			planets: []
+			planets: [],
+			favorites: []
 		},
 		actions: {
 			getMessage: () => {
@@ -37,6 +38,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ planets: preparando });
 					})
 					.catch(error => console.log("Error loading message from backend", error));
+			},
+			addfavs: uid => {
+				console.log(uid);
+				let preparando = getStore().personajes.map(item => {
+					if (item.uid == uid) {
+						return { ...item, favorite: true };
+					} else {
+						return item;
+					}
+				});
+				console.log(preparando);
+				setStore({ personajes: preparando });
+			},
+			addfavs2: uid => {
+				console.log(uid);
+				let preparando = getStore().planets.map(item => {
+					if (item.uid == uid) {
+						return { ...item, favorite: true };
+					} else {
+						return item;
+					}
+				});
+				console.log(preparando);
+				setStore({ planets: preparando });
+			},
+			addfavslist: () => {},
+
+			removefavslist: () => {
+				let noFav = getStore().personajes.filter(personajes => personajes.favorite === false);
 			}
 		}
 	};

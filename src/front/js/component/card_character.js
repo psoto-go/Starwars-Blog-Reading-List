@@ -1,9 +1,11 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component, useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Card_character = props => {
 	const [detalles, setDetalles] = useState();
+	const { store, actions } = useContext(Context);
 
 	useEffect(() => {
 		fetch(props.url)
@@ -11,7 +13,7 @@ export const Card_character = props => {
 				return res.json();
 			})
 			.then(person => {
-				setDetalles(person.result.properties);
+				setDetalles(person.result);
 			})
 			.catch(error => console.log("Error loading message from backend", error));
 	}, []);
@@ -24,28 +26,48 @@ export const Card_character = props => {
 				alt="Card image cap"
 			/>
 			<div className="card-body" style={{ heigth: "200px" }}>
-				<h5 className="card-title">{detalles ? detalles.name : ""}</h5>
+				<h5 className="card-title">{detalles ? detalles.properties.name : ""}</h5>
 				<p className="card-text">
-					{detalles ? (detalles.hair_color ? `Hair Color: ${detalles.hair_color}` : "") : ""}
+					{detalles
+						? detalles.properties.hair_color
+							? `Hair Color: ${detalles.properties.hair_color}`
+							: ""
+						: ""}
 				</p>
-				<p className="card-text">{detalles ? (detalles.terrain ? `Terrain: ${detalles.terrain} ` : "") : ""}</p>
 				<p className="card-text">
-					{detalles ? (detalles.eye_color ? `Eye-Color: ${detalles.eye_color}` : "") : ""}
+					{detalles ? (detalles.properties.terrain ? `Terrain: ${detalles.properties.terrain} ` : "") : ""}
 				</p>
 				<p className="card-text">
-					{detalles ? (detalles.population ? `Population: ${detalles.population}` : "") : ""}
+					{detalles
+						? detalles.properties.eye_color
+							? `Eye-Color: ${detalles.properties.eye_color}`
+							: ""
+						: ""}
 				</p>
-				<p className="card-text">{detalles ? (detalles.gender ? `Gender: ${detalles.gender}` : "") : ""}</p>
+				<p className="card-text">
+					{detalles
+						? detalles.properties.population
+							? `Population: ${detalles.properties.population}`
+							: ""
+						: ""}
+				</p>
+				<p className="card-text">
+					{detalles ? (detalles.properties.gender ? `Gender: ${detalles.properties.gender}` : "") : ""}
+				</p>
 
 				<Link to={"/characters/" + props.itemId}>
-					<a type="button" className="btn btn-primary">
+					<button type="button" className="btn btn-primary">
 						Learn More!
-					</a>
+					</button>
 				</Link>
 
-				<a href="#" className="btn btn-primary">
+				<div
+					onClick={() => {
+						actions.addfavs(detalles.uid);
+					}}
+					className="btn btn-primary">
 					<i className="far fa-heart" />
-				</a>
+				</div>
 			</div>
 		</div>
 	);

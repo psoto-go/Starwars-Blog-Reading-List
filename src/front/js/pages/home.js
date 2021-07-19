@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { ConjuntoPersons } from "../component/all.js";
-import { ConjuntoPlanets } from "../component/all.js";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
 
