@@ -12,7 +12,7 @@ export const Navbar = () => {
 					src="https://logodownload.org/wp-content/uploads/2015/12/star-wars-logo-1-1.png"
 					style={{ width: "100px" }}
 				/>
-				<DropdownButton id="dropdown-basic-button" title="Dropdown button">
+				<DropdownButton id="dropdown-basic-button" title={"Favoritos " + store.favorites.length}>
 					{store.personajes.map((item, index) => {
 						if (item.favorite == true) {
 							console.log(store.personajes);
