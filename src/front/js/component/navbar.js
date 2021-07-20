@@ -5,6 +5,7 @@ import { DropdownButton, Dropdown } from "react-bootstrap";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
+
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
 			<div className="container">
@@ -12,17 +13,37 @@ export const Navbar = () => {
 					src="https://logodownload.org/wp-content/uploads/2015/12/star-wars-logo-1-1.png"
 					style={{ width: "100px" }}
 				/>
-				<DropdownButton id="dropdown-basic-button" title={"Favoritos " + store.favorites.length}>
+				<DropdownButton className="d-inline mx-2" title={"Favoritos "}>
 					{store.personajes.map((item, index) => {
 						if (item.favorite == true) {
 							console.log(store.personajes);
-							return <Dropdown.Item key={index}>{item.name}</Dropdown.Item>;
+							return (
+								<>
+									<Dropdown.Item key={index}>
+										{item.name}
+										<div
+											onClick={() => {
+												console.log(item.uid);
+												actions.removefavs(item.uid);
+											}}
+											className="btn btn-primary">
+											<i className="far fa-heart" />
+										</div>
+									</Dropdown.Item>
+								</>
+							);
 						}
 					})}
+
 					{store.planets.map((item, index) => {
 						if (item.favorite == true) {
 							console.log(store.planets);
-							return <Dropdown.Item key={index}>{item.name}</Dropdown.Item>;
+							return (
+								<Dropdown.Item key={index}>
+									{item.name}
+									<button className="fa fa-trash" aria-hidden="true" />
+								</Dropdown.Item>
+							);
 						}
 					})}
 				</DropdownButton>

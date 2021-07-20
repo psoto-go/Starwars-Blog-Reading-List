@@ -2,8 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			personajes: [],
-			planets: [],
-			favorites: []
+			planets: []
 		},
 		actions: {
 			getMessage: () => {
@@ -63,10 +62,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(preparando);
 				setStore({ planets: preparando });
 			},
-			addfavslist: () => {},
-
-			removefavslist: () => {
-				let noFav = getStore().personajes.filter(personajes => personajes.favorite === false);
+			removefavs: uid => {
+				console.log(uid);
+				let preparando = getStore().personajes.map(item => {
+					if (item.uid == uid) {
+						return { ...item, favorite: false };
+					} else {
+						return item;
+					}
+				});
+				console.log(preparando);
+				setStore({ personajes: preparando });
+			},
+			removefavs: uid => {
+				console.log(uid);
+				let preparando = getStore().planets.map(item => {
+					if (item.uid == uid) {
+						return { ...item, favorite: false };
+					} else {
+						return item;
+					}
+				});
+				console.log(preparando);
+				setStore({ planets: preparando });
 			}
 		}
 	};
