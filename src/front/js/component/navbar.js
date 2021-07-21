@@ -27,7 +27,7 @@ export const Navbar = () => {
 												actions.removefavs(item.uid);
 											}}
 											className="btn btn-primary">
-											<i className="far fa-trash" />
+											<i className="fa fa-trash" />
 										</div>
 									</Dropdown.Item>
 								</>
@@ -48,7 +48,7 @@ export const Navbar = () => {
 												actions.removefavs1(item.uid);
 											}}
 											className="btn btn-primary">
-											<i className="far fa-trash" />
+											<i className="fa fa-trash" />
 										</div>
 									</Dropdown.Item>
 								</>
