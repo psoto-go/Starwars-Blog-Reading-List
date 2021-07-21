@@ -74,7 +74,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(preparando);
 				setStore({ personajes: preparando });
 			},
-			removefavs: uid => {
+			removefavs1: uid => {
 				console.log(uid);
 				let preparando = getStore().planets.map(item => {
 					if (item.uid == uid) {

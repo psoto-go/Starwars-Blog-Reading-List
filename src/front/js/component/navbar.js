@@ -27,7 +27,7 @@ export const Navbar = () => {
 												actions.removefavs(item.uid);
 											}}
 											className="btn btn-primary">
-											<i className="far fa-heart" />
+											<i className="far fa-trash" />
 										</div>
 									</Dropdown.Item>
 								</>
@@ -39,10 +39,19 @@ export const Navbar = () => {
 						if (item.favorite == true) {
 							console.log(store.planets);
 							return (
-								<Dropdown.Item key={index}>
-									{item.name}
-									<button className="fa fa-trash" aria-hidden="true" />
-								</Dropdown.Item>
+								<>
+									<Dropdown.Item key={index}>
+										{item.name}
+										<div
+											onClick={() => {
+												console.log(item.uid);
+												actions.removefavs1(item.uid);
+											}}
+											className="btn btn-primary">
+											<i className="far fa-trash" />
+										</div>
+									</Dropdown.Item>
+								</>
 							);
 						}
 					})}
